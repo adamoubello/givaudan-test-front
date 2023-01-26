@@ -1,0 +1,57 @@
+<!-- dialog-box.component.html -->
+<h1 mat-dialog-title>Details : <strong>{{this.local_action}}</strong></h1>
+<div mat-dialog-content>
+
+  <form [formGroup]="formdata" *ngIf="this.local_action != 'delete'; else elseTemplate"> 
+
+    <mat-form-field>
+      <!--<input placeholder="{{action}} Name" matInput [(ngModel)]="local_data.name">-->
+      <input matInput name="id" formControlName="id" readonly *ngIf="this.local_action == 'show'">
+      <input matInput name="id" formControlName="id" *ngIf="this.local_action == 'update'">
+      <input matInput name="id" placeholder="" formControlName="id" *ngIf="this.local_action == 'add'">
+    </mat-form-field>
+    <br/>
+    
+    <mat-form-field>
+      <!--<input placeholder="{{action}} Name" matInput [(ngModel)]="local_data.name">-->
+      <input matInput name="firstName" formControlName="firstName" readonly *ngIf="this.local_action == 'show'" readonly>
+      <input matInput name="firstName" formControlName="firstName" *ngIf="this.local_action == 'update'">
+      <input matInput name="firstName" placeholder="" formControlName="firstName" *ngIf="this.local_action == 'add'">
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field>
+      <!--<input placeholder="{{action}} Name" matInput [(ngModel)]="local_data.name">-->
+      <input matInput name="lastName" formControlName="lastName" readonly *ngIf="this.local_action == 'show'">
+      <input matInput name="lastName" formControlName="lastName" *ngIf="this.local_action == 'update'">
+      <input matInput name="lastName" placeholder="" formControlName="lastName" *ngIf="this.local_action == 'add'">
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field>
+      <!--<input placeholder="{{action}} Name" matInput [(ngModel)]="local_data.name">-->
+      <input matInput name="role" formControlName="role" readonly *ngIf="this.local_action == 'show'">
+      <input matInput name="role" formControlName="role" *ngIf="this.local_action == 'update'">
+      <input matInput name="role" placeholder="" formControlName="role" *ngIf="this.local_action == 'add'">
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field>
+      <!--<input placeholder="{{action}} Name" matInput [(ngModel)]="local_data.name">-->
+      <input matInput name="amount" formControlName="amount" readonly *ngIf="this.local_action == 'show'">
+      <input matInput name="amount" formControlName="amount" *ngIf="this.local_action == 'update'">
+      <input matInput name="amount" placeholder="" formControlName="amount" *ngIf="this.local_action == 'add'">
+    </mat-form-field>
+    <br/>
+
+  </form>
+  
+  <ng-template #elseTemplate>
+    Sure to delete <b>{{this.local_customer.firstName}}  {{this.local_customer.lastName}}</b> ?
+  </ng-template>
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction(formdata)" *ngIf="this.local_action != 'show'">{{this.local_action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Close</button>
+</div>
